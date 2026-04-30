@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+expense_dataset.csv
+expenses.csv
+run.bat
+test_app.py

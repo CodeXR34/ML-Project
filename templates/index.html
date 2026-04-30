@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero-section fade-in">
+    <div class="hero-content">
+        <span class="badge">Next-Gen Financial Intelligence</span>
+        <h1>Master Your <span class="gradient-text">Spending</span> with AI</h1>
+        <p>Take control of your financial destiny. Our advanced Random Forest engine analyzes your habits to predict future expenses with 98% accuracy.</p>
+        <div class="hero-btns">
+            <a href="/expense" class="primary-btn">
+                <i class="fas fa-rocket"></i> Get Started Now
+            </a>
+            <a href="/history" class="secondary-btn">
+                <i class="fas fa-history"></i> Analyze History
+            </a>
+        </div>
+    </div>
+    
+    <div class="hero-visual">
+        <div class="dashboard-preview">
+            <!-- Reliable Professional Dashboard Image -->
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Financial Analytics" class="hero-img">
+            
+            <!-- Animated Info Cards -->
+            <div class="floating-card c1">
+                <i class="fas fa-chart-line"></i>
+                <div>
+                    <span>Model Precision</span>
+                    <strong>98.4% Accuracy</strong>
+                </div>
+            </div>
+            
+            <div class="floating-card c2">
+                <i class="fas fa-wallet"></i>
+                <div>
+                    <span>Budget Status</span>
+                    <strong>Healthy Range</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="features-section">
+    <div class="section-title fade-in">
+        <h2>Why <span class="gradient-text">ExpensePredict?</span></h2>
+        <p>Empowering you with AI-driven insights to build a smarter financial life.</p>
+    </div>
+    
+    <div class="features-grid stagger-in">
+        <div class="feature-card">
+            <div class="icon-box"><i class="fas fa-microchip"></i></div>
+            <h3>Machine Learning</h3>
+            <p>We use state-of-the-art Random Forest regressors to find deep patterns in your spending behavior.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon-box"><i class="fas fa-lock"></i></div>
+            <h3>Local Privacy</h3>
+            <p>Your financial data never leaves your browser. All processing happens right here, securely.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon-box"><i class="fas fa-bolt"></i></div>
+            <h3>Real-time Insights</h3>
+            <p>Instant results with interactive charts. No waiting, no complex spreadsheets needed.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Simple SVG Illustration for the bottom -->
+<div class="cta-banner container">
+    <div class="cta-content">
+        <h2>Transform Your Finances Today</h2>
+        <p>Join the movement towards intelligent, data-driven financial management.</p>
+        <br>
+        <a href="/expense" class="primary-btn" style="background: #fff; color: var(--primary);">
+            <i class="fas fa-user-plus"></i> Join Now Free
+        </a>
+    </div>
+</div>
+{% endblock %}

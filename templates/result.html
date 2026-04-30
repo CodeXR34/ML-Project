@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header fade-in">
+    <h1>Prediction <span class="gradient-text">Results</span></h1>
+    <p>AI-generated forecast based on your spending patterns and profile.</p>
+</div>
+
+<div class="result-layout fade-in">
+    <div class="main-result">
+        <!-- Main Prediction Card -->
+        <section class="glass-card result-hero-card">
+            <div class="prediction-value">
+                <h3>Estimated Monthly Expense</h3>
+                <div class="amount">₹{{ "{:,.2f}".format(data.prediction) }}</div>
+                <div class="confidence">Confidence Range: {{ data.range }}</div>
+            </div>
+            <div class="insights-list" id="insights-container">
+                <!-- Insights will be injected by JS -->
+            </div>
+        </section>
+
+        <!-- Category Chart -->
+        <section class="glass-card chart-section">
+            <div class="card-header">
+                <i class="fas fa-chart-pie"></i>
+                <h2>Spending Breakdown</h2>
+            </div>
+            <div class="chart-container">
+                <canvas id="resultChart"></canvas>
+            </div>
+        </section>
+    </div>
+
+    <aside class="side-panel">
+        <section class="glass-card summary-card">
+            <h3>Profile Summary</h3>
+            <div class="summary-item">
+                <span>Occupation:</span>
+                <strong>{{ data.input_data.occupation }}</strong>
+            </div>
+            <div class="summary-item">
+                <span>Location:</span>
+                <strong>{{ data.input_data.city_type }}</strong>
+            </div>
+            <div class="summary-item">
+                <span>Monthly Income:</span>
+                <strong>₹{{ "{:,.2f}".format(data.input_data.monthly_income|float) }}</strong>
+            </div>
+            <div class="summary-item">
+                <span>Record Date:</span>
+                <strong>{{ data.input_data.date }}</strong>
+            </div>
+            <hr>
+            <a href="/expense" class="secondary-btn small-btn">Recalculate <i class="fas fa-redo"></i></a>
+        </section>
+    </aside>
+</div>
+
+<script>
+    // Data passed from Flask to JS for Chart.js
+    const chartData = [
+        {{ data.input_data.food }}, 
+        {{ data.input_data.transport }}, 
+        {{ data.input_data.rent }}, 
+        {{ data.input_data.entertainment }}, 
+        {{ data.input_data.utilities }}, 
+        {{ data.input_data.shopping }}, 
+        {{ data.input_data.others }}
+    ];
+</script>
+{% endblock %}

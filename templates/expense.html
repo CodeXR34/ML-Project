@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header fade-in">
+    <h1>Expense Predictor</h1>
+    <p>Fill in the details below to get an instant prediction of your spending.</p>
+</div>
+
+<div class="form-container fade-in">
+    <section class="form-section">
+        <form id="expense-form" class="unified-form-grid">
+            <!-- Row 1 -->
+            <div class="input-group">
+                <label for="occupation">Occupation</label>
+                <select id="occupation" required>
+                    <option value="" disabled selected>Select occupation</option>
+                    <option value="Student">Student</option>
+                    <option value="Salaried">Salaried</option>
+                    <option value="Business">Business</option>
+                    <option value="Freelancer">Freelancer</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" required placeholder="e.g. 25">
+            </div>
+            <div class="input-group">
+                <label for="income">Monthly Income (₹)</label>
+                <input type="number" id="income" required placeholder="e.g. 50000">
+            </div>
+
+            <!-- Row 2 -->
+            <div class="input-group">
+                <label for="city_type">City Type</label>
+                <select id="city_type" required>
+                    <option value="Urban">Urban</option>
+                    <option value="Semi-Urban">Semi-Urban</option>
+                    <option value="Rural">Rural</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="date">Current Date</label>
+                <input type="date" id="date" required>
+            </div>
+            <div class="input-group">
+                <label for="food">Food Expense</label>
+                <input type="number" id="food" value="0" required placeholder="0.00">
+            </div>
+
+            <!-- Row 3 -->
+            <div class="input-group">
+                <label for="transport">Transport Expense</label>
+                <input type="number" id="transport" value="0" required placeholder="0.00">
+            </div>
+            <div class="input-group">
+                <label for="rent">Rent Expense</label>
+                <input type="number" id="rent" value="0" required placeholder="0.00">
+            </div>
+            <div class="input-group">
+                <label for="entertainment">Entertainment</label>
+                <input type="number" id="entertainment" value="0" required placeholder="0.00">
+            </div>
+
+            <!-- Row 4 -->
+            <div class="input-group">
+                <label for="utilities">Utilities Expense</label>
+                <input type="number" id="utilities" value="0" required placeholder="0.00">
+            </div>
+            <div class="input-group">
+                <label for="shopping">Shopping Expense</label>
+                <input type="number" id="shopping" value="0" required placeholder="0.00">
+            </div>
+            <div class="input-group">
+                <label for="others">Other Expenses</label>
+                <input type="number" id="others" value="0" required placeholder="0.00">
+            </div>
+
+            <!-- Action Button -->
+            <div class="calculate-btn-container">
+                <button type="submit" class="calculate-btn" id="predict-btn">
+                    <i class="fas fa-calculator"></i>
+                    Calculate Prediction
+                </button>
+            </div>
+        </form>
+    </section>
+</div>
+{% endblock %}

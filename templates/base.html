@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpensePredict AI | Premium Finance Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <i class="fas fa-wallet"></i>
+                <span>ExpensePredict AI</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/" class="{{ 'active' if request.path == '/' else '' }}">Home</a></li>
+                <li><a href="/expense" class="{{ 'active' if request.path == '/expense' else '' }}">Track Expense</a></li>
+                <li><a href="/history" class="{{ 'active' if request.path == '/history' else '' }}">History</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="glass-btn-circle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo">
+                    <i class="fas fa-wallet"></i>
+                    <span>ExpensePredict AI</span>
+                </div>
+                <p>Empowering your financial future through intelligent predictions and tracking.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/expense">Track Expense</a></li>
+                    <li><a href="/history">View History</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ExpensePredict AI. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <div id="loader" class="loader-overlay hidden">
+        <div class="spinner"></div>
+        <p>Analyzing Spending Patterns...</p>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

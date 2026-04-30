@@ -1,0 +1,105 @@
+/* --- REFINED 3-COLUMN FORM WITH ICONS --- */
+
+.form-container {
+    max-width: 1200px;
+    margin: 4rem auto;
+}
+
+.form-section {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 4rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 10px 15px -3px rgba(0,0,0,0.1);
+    border: 1px solid #f1f5f9;
+}
+
+.unified-form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem 2rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 1rem;
+    color: #6366f1; /* Premium Blue/Indigo */
+    font-size: 1rem;
+    pointer-events: none;
+}
+
+.input-with-icon input, 
+.input-with-icon select {
+    width: 100%;
+    padding: 1rem 1rem 1rem 2.8rem; /* Space for icon on left */
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #1e293b;
+    background: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+.input-with-icon input:focus, 
+.input-with-icon select:focus {
+    border-color: #6366f1;
+    background: #ffffff;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+.calculate-btn-container {
+    grid-column: span 3;
+    margin-top: 3rem;
+}
+
+.calculate-btn {
+    width: 100%;
+    background: #4f46e5;
+    color: white;
+    padding: 1.2rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.calculate-btn:hover {
+    background: #4338ca;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
+}
+
+.calculate-btn i {
+    font-size: 1.2rem;
+}
+
+/* Background for the page */
+body {
+    background: #f1f5f9;
+}

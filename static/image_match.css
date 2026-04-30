@@ -1,0 +1,99 @@
+/* --- EXACT IMAGE MATCH STYLES --- */
+
+.form-container {
+    max-width: 1100px;
+    margin: 0 auto 6rem;
+}
+
+.form-section {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+    border: 1px solid #f1f5f9;
+}
+
+.unified-form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem 2.5rem; /* Horizontal and Vertical gaps */
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #1e293b;
+    letter-spacing: -0.2px;
+}
+
+.input-group input, 
+.input-group select {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 0.9rem 1.2rem;
+    font-size: 1rem;
+    color: #475569;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.input-group input:focus, 
+.input-group select:focus {
+    border-color: #2563eb;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.input-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23475569' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.2rem;
+    padding-right: 2.5rem;
+}
+
+.calculate-btn-container {
+    grid-column: span 3;
+    margin-top: 2rem;
+}
+
+.calculate-btn {
+    width: 100%;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.calculate-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+/* Background refinement for the whole page */
+body {
+    background-color: #f8fafc;
+}
+
+.page-header p {
+    color: #64748b;
+    font-weight: 500;
+}

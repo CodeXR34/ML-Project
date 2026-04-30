@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Hero Header -->
+<div class="history-hero fade-in">
+    <div class="history-hero-content">
+        <span class="badge"><i class="fas fa-clock"></i> Financial Timeline</span>
+        <h1>Your Spending <span class="gradient-text">History</span></h1>
+        <p>Track your past AI predictions and monitor your complete financial journey over time.</p>
+    </div>
+    <div class="history-hero-icon">
+        <div class="hero-icon-ring">
+            <i class="fas fa-chart-bar"></i>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Summary Cards -->
+<div class="history-stats stagger-in">
+    <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(99,102,241,0.12);">
+            <i class="fas fa-file-invoice-dollar" style="color:#6366f1;"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-label">Total Records</span>
+            <strong class="stat-value" id="stat-total">0</strong>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(16,185,129,0.12);">
+            <i class="fas fa-rupee-sign" style="color:#10b981;"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-label">Avg. Prediction</span>
+            <strong class="stat-value" id="stat-avg">₹0</strong>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(245,158,11,0.12);">
+            <i class="fas fa-arrow-trend-up" style="color:#f59e0b;"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-label">Highest Predicted</span>
+            <strong class="stat-value" id="stat-max">₹0</strong>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(37,99,235,0.12);">
+            <i class="fas fa-arrow-trend-down" style="color:#2563eb;"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-label">Lowest Predicted</span>
+            <strong class="stat-value" id="stat-min">₹0</strong>
+        </div>
+    </div>
+</div>
+
+<!-- Main History Table Card -->
+<div class="history-main-card fade-in">
+    <div class="history-card-header">
+        <div class="history-card-title">
+            <div class="history-title-icon">
+                <i class="fas fa-list-ul"></i>
+            </div>
+            <div>
+                <h2>Prediction Records</h2>
+                <span class="history-subtitle">All your expense predictions in one place</span>
+            </div>
+        </div>
+        <button id="clear-history" class="danger-btn">
+            <i class="fas fa-trash-alt"></i> Clear All
+        </button>
+    </div>
+
+    <div class="history-table-wrapper">
+        <table class="history-table" id="history-main-table">
+            <thead>
+                <tr>
+                    <th><i class="fas fa-hashtag"></i> #</th>
+                    <th><i class="fas fa-calendar-alt"></i> Date</th>
+                    <th><i class="fas fa-wallet"></i> Income</th>
+                    <th><i class="fas fa-brain"></i> Predicted Expense</th>
+                    <th><i class="fas fa-percentage"></i> Expense Ratio</th>
+                    <th><i class="fas fa-circle-check"></i> Status</th>
+                    <th><i class="fas fa-cog"></i> Action</th>
+                </tr>
+            </thead>
+            <tbody id="history-table-body">
+                <!-- rows injected by JS -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-history" class="empty-state hidden">
+        <div class="empty-icon-wrap">
+            <i class="fas fa-folder-open"></i>
+        </div>
+        <h3>No Records Yet</h3>
+        <p>You haven't made any predictions. Start tracking your expenses to see the history here!</p>
+        <a href="/expense" class="primary-btn">
+            <i class="fas fa-rocket"></i> Track Your First Expense
+        </a>
+    </div>
+</div>
+
+<!-- Mini Trend Chart -->
+<div class="history-chart-card fade-in" id="chart-section" style="display:none;">
+    <div class="history-card-header">
+        <div class="history-card-title">
+            <div class="history-title-icon" style="background:rgba(16,185,129,0.12);">
+                <i class="fas fa-chart-line" style="color:#10b981;"></i>
+            </div>
+            <div>
+                <h2>Spending Trend</h2>
+                <span class="history-subtitle">Prediction amounts over time</span>
+            </div>
+        </div>
+    </div>
+    <div class="chart-wrapper">
+        <canvas id="trendChart" height="260"></canvas>
+    </div>
+</div>
+
+<!-- Script for stats + trend chart -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const history = JSON.parse(localStorage.getItem('expenseHistory') || '[]');
+
+    // Update stat cards
+    if (history.length > 0) {
+        const preds = history.map(h => h.prediction);
+        const avg = preds.reduce((a,b) => a+b, 0) / preds.length;
+        document.getElementById('stat-total').textContent = history.length;
+        document.getElementById('stat-avg').textContent  = '₹' + Math.round(avg).toLocaleString();
+        document.getElementById('stat-max').textContent  = '₹' + Math.max(...preds).toLocaleString();
+        document.getElementById('stat-min').textContent  = '₹' + Math.min(...preds).toLocaleString();
+
+        // Show and render trend chart
+        const chartSection = document.getElementById('chart-section');
+        chartSection.style.display = 'block';
+        const reversed = [...history].reverse();
+        const ctx = document.getElementById('trendChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: reversed.map(h => h.date),
+                datasets: [{
+                    label: 'Predicted Expense (₹)',
+                    data: reversed.map(h => h.prediction),
+                    borderColor: '#6366f1',
+                    backgroundColor: 'rgba(99,102,241,0.08)',
+                    pointBackgroundColor: '#6366f1',
+                    pointRadius: 5,
+                    pointHoverRadius: 8,
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => ' ₹' + ctx.parsed.y.toLocaleString()
+                        }
+                    }
+                },
+                scales: {
+                    x: { grid: { color: 'rgba(99,102,241,0.08)' }, ticks: { color: '#64748b' } },
+                    y: {
+                        grid: { color: 'rgba(99,102,241,0.08)' },
+                        ticks: { color: '#64748b', callback: v => '₹' + v.toLocaleString() }
+                    }
+                }
+            }
+        });
+    }
+});
+</script>
+{% endblock %}

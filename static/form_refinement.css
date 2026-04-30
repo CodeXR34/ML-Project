@@ -1,0 +1,200 @@
+/* --- Refined Form Styles --- */
+
+.form-container {
+    max-width: 900px;
+    margin: 0 auto 6rem;
+}
+
+.form-section {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 3.5rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+.form-section-header {
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.form-section-header h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #111827;
+    letter-spacing: -0.5px;
+}
+
+.form-section-header p {
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.input-wrapper label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.input-wrapper label i {
+    color: var(--primary);
+    font-size: 1rem;
+    width: 20px;
+}
+
+.input-field {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
+    color: #111827;
+    transition: var(--transition);
+}
+
+.input-field:focus {
+    background: #ffffff;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+/* Expense Categories Grid */
+.expense-grid-title {
+    margin: 4rem 0 2rem;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #111827;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.expense-grid-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e5e7eb;
+}
+
+.expense-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.expense-card {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: var(--transition);
+}
+
+.expense-card:hover {
+    background: #ffffff;
+    border-color: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.expense-card label {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #4b5563;
+}
+
+.expense-card label i {
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+.expense-card input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #111827;
+    outline: none;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.expense-card input:focus {
+    border-bottom-color: var(--primary);
+}
+
+/* Prediction Button */
+.predict-btn-container {
+    margin-top: 4rem;
+}
+
+.predict-btn {
+    width: 100%;
+    background: #000000;
+    color: #ffffff;
+    padding: 1.4rem;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    transition: var(--transition);
+}
+
+.predict-btn:hover {
+    background: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 30px -10px rgba(37, 99, 235, 0.4);
+}
+
+.predict-btn i {
+    font-size: 1.4rem;
+    transition: var(--transition);
+}
+
+.predict-btn:hover i {
+    transform: rotate(15deg) scale(1.2);
+}
+
+/* Animations */
+.stagger-in > * {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: staggerIn 0.5s ease forwards;
+}
+
+@keyframes staggerIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.stagger-in > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-in > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-in > *:nth-child(3) { animation-delay: 0.3s; }

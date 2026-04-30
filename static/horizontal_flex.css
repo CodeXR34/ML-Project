@@ -1,0 +1,85 @@
+/* --- Horizontal Form Refinements --- */
+
+.form-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.input-wrapper {
+    flex: 1 1 300px; /* Allow fields to grow and shrink, but stay roughly 300px */
+    display: flex;
+    flex-direction: row; /* Horizontal label and input */
+    align-items: center;
+    gap: 1.5rem;
+    background: #fdfdfd;
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px;
+    border: 1px solid #f1f5f9;
+}
+
+.input-wrapper label {
+    flex: 0 0 140px; /* Fixed width for labels to align inputs */
+    margin-bottom: 0;
+}
+
+.input-field {
+    flex: 1;
+    width: 100%;
+}
+
+/* Horizontal Expense Pods */
+.expense-categories-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: #f8fafc;
+    border-radius: 20px;
+    justify-content: flex-start;
+}
+
+.expense-card {
+    flex: 1 1 200px;
+    display: flex;
+    flex-direction: row; /* Horizontal layout inside card */
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.2rem;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+}
+
+.expense-card label {
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+.expense-card input {
+    text-align: right;
+    width: 80px;
+    padding: 0.2rem;
+    border-bottom: 2px solid #e2e8f0;
+    font-size: 1.1rem;
+}
+
+.expense-card input:focus {
+    width: 100px; /* Expand slightly on focus */
+}
+
+/* Special case for wide cards */
+.expense-card.full-width {
+    flex: 1 1 100%;
+}
+
+.predict-btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.predict-btn {
+    max-width: 400px;
+}
